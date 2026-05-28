@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Ravi Kant Chaudhary | Data Scientist & AI/ML Developer</title>
+  <meta name="description" content="Portfolio of Ravi Kant Chaudhary, a Data Scientist and AI/ML Developer. Winner of multiple hackathons, specializing in computer vision, machine learning models, and interactive web applications.">
+  <meta name="keywords" content="Ravi Kant Chaudhary, Data Scientist, AI, ML, Machine Learning, Python, C++, Deep Learning, CNN, Streamlit, Portfolio">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Particle Canvas Background -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Ambient Glow Gradients -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Header Navigation -->
+  <header class="glass-nav" id="my-header">
+    <div class="nav-container">
+      <a href="#" class="logo-3d-container" id="nav-logo">
+        <div class="logo-3d-wrapper">
+          <img src="avatar.png" alt="Ravi" class="logo-3d-avatar">
+          <div class="logo-3d-reflection"></div>
+        </div>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link contact-btn-nav">Contact Me</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" id="theme-switch-btn">
+          <!-- Sun Icon (visible in dark mode) -->
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (visible in light mode) -->
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        
+        <button class="hamburger-menu" id="hamburger-btn" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-in">
+          <span class="pulse-dot"></span> Available for Opportunities
+        </div>
+        <h1 class="hero-title animate-title">
+          Hi, I am <span class="gradient-text">Ravi Kant Chaudhary</span>
+        </h1>
+        <h2 class="hero-subtitle animate-subtitle">
+          I'm a <span id="typed-text"></span><span class="typed-cursor">|</span>
+        </h2>
+        <p class="hero-description animate-desc">
+          A passionate Data Science & AI/ML Developer dedicated to turning complex datasets into intelligent, interactive web solutions and predictive models.
+        </p>
+        
+        <div class="hero-cta animate-cta">
+          <a href="#projects" class="btn btn-primary" id="cta-view-work">View Projects</a>
+          <a href="#contact" class="btn btn-secondary" id="cta-contact">Get in Touch</a>
+        </div>
+        
+        <div class="hero-socials animate-socials">
+          <a href="https://www.linkedin.com/in/ravi020/" target="_blank" rel="noopener" class="social-icon-wrapper" aria-label="LinkedIn" id="hero-social-linkedin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://github.com/Ravi182004" target="_blank" rel="noopener" class="social-icon-wrapper" aria-label="GitHub" id="hero-social-github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="mailto:ravikantchaudhary020@gmail.com" class="social-icon-wrapper" aria-label="Email" id="hero-social-email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="tel:+918094908913" class="social-icon-wrapper" aria-label="Phone" id="hero-social-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="scroll-indicator animate-bounce">
+        <a href="#about" aria-label="Scroll Down">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- About & Skills Section -->
+    <section class="section-padding scroll-reveal" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">My Journey & Expertise</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-info card-glass">
+            <h3>Who I Am</h3>
+            <p>
+              I am a Computer Science Engineering Graduate specializing in Data Science and Machine Learning. With a solid foundation in Programming Languages, Data analytics packages, and frameworks like PyTorch and TensorFlow, I build products that leverage intelligent predictions and deep neural insights.
+            </p>
+            <p>
+              My research interests lie in Computer Vision, Deep Learning, and deploying scalable web apps for ML tools using Flask and Streamlit. I enjoy participating in hackathons, solving algorithmic puzzles, and implementing state-of-the-art architectures.
+            </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-num">8.82</span>
+                <span class="stat-label">B.Tech CGPA</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">150+</span>
+                <span class="stat-label">Leetcode Solved</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">3+</span>
+                <span class="stat-label">Hackathons Won</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="skills-showcase card-glass" id="skills">
+            <h3>Technical Skills</h3>
+            
+            <div class="skills-tabs">
+              <button class="skill-tab active" data-category="all">All</button>
+              <button class="skill-tab" data-category="languages">Languages</button>
+              <button class="skill-tab" data-category="ds">Data Science</button>
+              <button class="skill-tab" data-category="dev">Web/DB/Cloud</button>
+            </div>
+            
+            <div class="skills-grid">
+              <!-- Languages -->
+              <div class="skill-pill" data-category="languages">
+                <span class="skill-icon">C++</span>
+                <div class="skill-details">
+                  <span class="skill-name">C++</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="languages">
+                <span class="skill-icon">Py</span>
+                <div class="skill-details">
+                  <span class="skill-name">Python</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="languages">
+                <span class="skill-icon">SQL</span>
+                <div class="skill-details">
+                  <span class="skill-name">SQL</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+              </div>
+              
+              <!-- Data Science -->
+              <div class="skill-pill" data-category="ds">
+                <span class="skill-icon">PD</span>
+                <div class="skill-details">
+                  <span class="skill-name">Pandas / NumPy</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="ds">
+                <span class="skill-icon">SK</span>
+                <div class="skill-details">
+                  <span class="skill-name">Scikit-learn</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="ds">
+                <span class="skill-icon">TF</span>
+                <div class="skill-details">
+                  <span class="skill-name">TensorFlow / Keras</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="ds">
+                <span class="skill-icon">PT</span>
+                <div class="skill-details">
+                  <span class="skill-name">PyTorch</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="ds">
+                <span class="skill-icon">AI</span>
+                <div class="skill-details">
+                  <span class="skill-name">Large Language Models</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+              </div>
+              
+              <!-- Dev/DB/Cloud -->
+              <div class="skill-pill" data-category="dev">
+                <span class="skill-icon">DB</span>
+                <div class="skill-details">
+                  <span class="skill-name">MySQL</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="dev">
+                <span class="skill-icon">AWS</span>
+                <div class="skill-details">
+                  <span class="skill-name">AWS Cloud</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="dev">
+                <span class="skill-icon">ST</span>
+                <div class="skill-details">
+                  <span class="skill-name">Streamlit / Flask</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                </div>
+              </div>
+              <div class="skill-pill" data-category="dev">
+                <span class="skill-icon">FL</span>
+                <div class="skill-details">
+                  <span class="skill-name">Flutter / UI</span>
+                  <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internship Experience Section -->
+    <section class="section-padding section-alt scroll-reveal" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Timeline</span>
+          <h2 class="section-title">Internship Experience</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="timeline">
+          <!-- Celebal -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content card-glass">
+              <span class="timeline-date">June 2025 – August 2025</span>
+              <h3 class="experience-company">Celebal Technologies</h3>
+              <h4 class="experience-role">Data Science Intern</h4>
+              <p class="experience-desc">
+                Completed a intensive two-month internship focused on real-world machine learning deployments.
+              </p>
+              <ul class="experience-bullets">
+                <li>Performed extensive data cleaning, processing, and exploratory data analysis (EDA) on vast unstructured datasets.</li>
+                <li>Developed and optimized predictive models using Scikit-Learn, PyTorch, and ensemble methods.</li>
+                <li>Built and deployed interactive, real-time analytics web dashboards using Streamlit, demonstrating production-level implementation.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Cognifyz -->
+          <div class="timeline-item right">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content card-glass">
+              <span class="timeline-date">January 2025 – February 2025</span>
+              <h3 class="experience-company">Cognifyz Technologies</h3>
+              <h4 class="experience-role">Data Science Intern</h4>
+              <p class="experience-desc">
+                Gained practical machine learning training and remote experience in data-driven decision-making.
+              </p>
+              <ul class="experience-bullets">
+                <li>Utilized advanced Python packages to build statistical visualizations representing dataset features.</li>
+                <li>Created robust classification and prediction models to help outline business-centric parameters.</li>
+                <li>Documented and presented model performance reviews highlighting critical data insights.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section-padding scroll-reveal" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">My Work</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="project-grid">
+          <!-- Heart Disease -->
+          <div class="project-card card-glass">
+            <div class="project-image-wrapper">
+              <img src="project-heart.png" alt="Heart Disease Prediction Model Dashboard" class="project-image">
+              <div class="project-overlay">
+                <a href="https://github.com/Ravi182004" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub" id="proj-github-heart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Machine Learning</span>
+              <h3 class="project-title">Heart Disease Prediction Model</h3>
+              <p class="project-description">
+                Developed a machine learning-based prediction system to estimate heart disease risk using patient health data. Features a fully interactive UI.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">XGBoost</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">Joblib</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Plant Disease -->
+          <div class="project-card card-glass">
+            <div class="project-image-wrapper">
+              <img src="project-plant.png" alt="Plant Disease Detection Web Application" class="project-image">
+              <div class="project-overlay">
+                <a href="https://github.com/Ravi182004" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub" id="proj-github-plant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Deep Learning</span>
+              <h3 class="project-title">Plant Disease Detection (CNN)</h3>
+              <p class="project-description">
+                Developed a deep learning web application to detect plant diseases from leaf images using a Convolutional Neural Network (CNN) for automated classification.
+              </p>
+              <div class="project-tags">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Keras</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Computer Vision</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Medical Image Analyzer -->
+          <div class="project-card card-glass">
+            <div class="project-image-wrapper">
+              <img src="project-medical.png" alt="AI Medical Image Analyzer Interface" class="project-image">
+              <div class="project-overlay">
+                <a href="https://github.com/Ravi182004" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub" id="proj-github-medical">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">AI / Healthcare</span>
+              <h3 class="project-title">Medical Image Analyzer</h3>
+              <p class="project-description">
+                AI-powered web app designed to assist in analyzing medical images like MRI scans, CT scans, and Chest X-rays using advanced CNN models.
+              </p>
+              <div class="project-tags">
+                <span class="tag">PyTorch</span>
+                <span class="tag">CNN</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Medical Image Processing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section-padding section-alt scroll-reveal" id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Milestones</span>
+          <h2 class="section-title">Achievements</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="achievements-grid">
+          <!-- Codefiesta -->
+          <div class="achievement-card card-glass">
+            <div class="achievement-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <h3>Codefiesta Hackathon 4.0</h3>
+            <span class="achievement-year">Winner | 2025</span>
+            <p>Clinched the 1st place in the flagship university-level software hackathon for constructing an innovative automated analytics product.</p>
+          </div>
+          
+          <!-- Google Cloud -->
+          <div class="achievement-card card-glass">
+            <div class="achievement-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3>Digital Campus Google Cloud Hackathon</h3>
+            <span class="achievement-year">Winner | 2024</span>
+            <p>Won top recognition for engineering cloud-native infrastructure pipelines using GCP serverless functions and containerized components.</p>
+          </div>
+          
+          <!-- Udhbhav Exhibition -->
+          <div class="achievement-card card-glass">
+            <div class="achievement-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </div>
+            <h3>Udhbhav Exhibition</h3>
+            <span class="achievement-year">Winner | 2023</span>
+            <p>Awarded first-place honors for showcasing state-of-the-art engineering models designed to automate localized crop disease scans.</p>
+          </div>
+          
+          <!-- Leetcode -->
+          <div class="achievement-card card-glass">
+            <div class="achievement-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3>Leetcode Solver</h3>
+            <span class="achievement-year">150+ Solved</span>
+            <p>Consistently solve complex data structures and algorithm challenges on Leetcode. Dedicated to optimal time and space complexities.</p>
+            <a href="https://leetcode.com/" target="_blank" rel="noopener" class="leetcode-link-btn" id="leetcode-link">View Profile →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section-padding scroll-reveal" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Academic Background</span>
+          <h2 class="section-title">Education</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="education-container">
+          <!-- B.Tech -->
+          <div class="education-card card-glass">
+            <div class="edu-header">
+              <div class="edu-title-group">
+                <h3>Bachelor of Technology in Computer Science</h3>
+                <span class="edu-inst">Poornima Institute of Engineering & Technology, Jaipur</span>
+              </div>
+              <span class="edu-date">Nov 2022 – Apr 2026</span>
+            </div>
+            <div class="edu-body">
+              <p>Specializing in Data Science and Deep Learning workflows. Actively involved in project clusters and hacking events.</p>
+              <div class="edu-badge-val">CGPA: 8.82 / 10</div>
+            </div>
+          </div>
+          
+          <!-- XII -->
+          <div class="education-card card-glass">
+            <div class="edu-header">
+              <div class="edu-title-group">
+                <h3>Senior Secondary Education (XII)</h3>
+                <span class="edu-inst">Kendriya Vidyalaya Fort William</span>
+              </div>
+              <span class="edu-date">2021 – 2022</span>
+            </div>
+            <div class="edu-body">
+              <p>Focused on Science & Mathematics curriculum, securing top-tier school results.</p>
+              <div class="edu-badge-val">Percentage: 82.4%</div>
+            </div>
+          </div>
+          
+          <!-- X -->
+          <div class="education-card card-glass">
+            <div class="edu-header">
+              <div class="edu-title-group">
+                <h3>Matriculation (X)</h3>
+                <span class="edu-inst">Kendriya Vidyalaya Fort William</span>
+              </div>
+              <span class="edu-date">2019 – 2020</span>
+            </div>
+            <div class="edu-body">
+              <p>Primary educational base in general sciences and languages.</p>
+              <div class="edu-badge-val">Percentage: 90.6%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding section-alt scroll-reveal" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Let's Connect</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="underline"></div>
+        </div>
+        
+        <div class="contact-grid">
+          <!-- Info Details -->
+          <div class="contact-info card-glass">
+            <h3>Contact Information</h3>
+            <p>Feel free to reach out for internship roles, research projects, open-source collaborations, or technical discussions!</p>
+            
+            <div class="contact-details-list">
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Email</span>
+                  <a href="mailto:ravikantchaudhary020@gmail.com" class="contact-value">ravikantchaudhary020@gmail.com</a>
+                </div>
+              </div>
+              
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Phone</span>
+                  <a href="tel:+918094908913" class="contact-value">+91 8094908913</a>
+                </div>
+              </div>
+              
+              <div class="contact-detail-item">
+                <div class="contact-detail-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value">Kolkata, India</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="contact-socials">
+              <a href="https://www.linkedin.com/in/ravi020/" target="_blank" rel="noopener" aria-label="LinkedIn" id="contact-social-linkedin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="https://github.com/Ravi182004" target="_blank" rel="noopener" aria-label="GitHub" id="contact-social-github">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="contact-form-container card-glass">
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="form-name">Name</label>
+                <input type="text" id="form-name" placeholder="John Doe" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="form-email">Email Address</label>
+                <input type="email" id="form-email" placeholder="johndoe@example.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="form-subject">Subject</label>
+                <input type="text" id="form-subject" placeholder="Collaboration / Job Opportunity" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="form-message">Message</label>
+                <textarea id="form-message" rows="5" placeholder="Write your message here..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-submit" id="form-submit-btn">
+                <span>Send Message</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-arrow">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+            <div id="form-status" class="form-status-msg hidden"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-tagline">Designed & Built with <span class="heart-pulse">♥</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
