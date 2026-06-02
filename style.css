@@ -47,6 +47,7 @@ body.dark-theme {
   --card-bg: rgba(17, 24, 39, 0.65);
   --card-border: rgba(255, 255, 255, 0.08);
   --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --card-shadow-hover: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
   
   --nav-bg: rgba(11, 15, 25, 0.7);
   --nav-border: rgba(255, 255, 255, 0.05);
@@ -57,16 +58,22 @@ body.dark-theme {
   
   --timeline-line: #1f2937;
   --input-bg: rgba(17, 24, 39, 0.5);
+  --input-border: var(--card-border);
   
   --glow-color-1: rgba(99, 102, 241, 0.15);
   --glow-color-2: rgba(20, 184, 166, 0.12);
   --glow-color-3: rgba(139, 92, 246, 0.1);
+
+  --tag-bg: rgba(255, 255, 255, 0.04);
+  --tag-border: rgba(255, 255, 255, 0.08);
+  --tag-color: var(--text-secondary);
+  --pill-bg: rgba(255, 255, 255, 0.02);
 }
 
 /* Light Theme */
 body.light-theme {
-  --bg-color: #f8fafc;
-  --bg-alt: #f1f5f9;
+  --bg-color: #f0f4f8;
+  --bg-alt: #e2e8f0;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
@@ -81,23 +88,30 @@ body.light-theme {
   --gradient-secondary: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
   --gradient-glow: radial-gradient(circle, rgba(79,70,229,0.08) 0%, rgba(13,148,136,0.03) 50%, rgba(0,0,0,0) 100%);
   
-  --card-bg: rgba(255, 255, 255, 0.75);
-  --card-border: rgba(0, 0, 0, 0.06);
-  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --card-shadow-hover: 0 15px 35px -5px rgba(0, 0, 0, 0.08), 0 5px 15px -5px rgba(0, 0, 0, 0.04);
   
-  --nav-bg: rgba(248, 250, 252, 0.8);
-  --nav-border: rgba(0, 0, 0, 0.04);
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-border: rgba(15, 23, 42, 0.06);
 
   --scroll-track: #f8fafc;
   --scroll-thumb: #cbd5e1;
   --scroll-thumb-hover: #94a3b8;
   
   --timeline-line: #e2e8f0;
-  --input-bg: rgba(255, 255, 255, 0.8);
+  --input-bg: #ffffff;
+  --input-border: rgba(15, 23, 42, 0.12);
   
-  --glow-color-1: rgba(79, 70, 229, 0.06);
-  --glow-color-2: rgba(13, 148, 136, 0.05);
-  --glow-color-3: rgba(124, 58, 237, 0.04);
+  --glow-color-1: rgba(79, 70, 229, 0.08);
+  --glow-color-2: rgba(13, 148, 136, 0.08);
+  --glow-color-3: rgba(124, 58, 237, 0.06);
+
+  --tag-bg: rgba(79, 70, 229, 0.06);
+  --tag-border: rgba(79, 70, 229, 0.12);
+  --tag-color: var(--primary);
+  --pill-bg: rgba(255, 255, 255, 0.65);
 }
 
 /* ==========================================================================
@@ -312,6 +326,20 @@ body.light-theme #bg-video {
   border-color: var(--text-secondary);
 }
 
+.btn-icon {
+  gap: 8px;
+}
+
+.btn-svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-icon:hover .btn-svg {
+  transform: translateY(2px);
+}
+
 /* Glassmorphism Card base */
 .card-glass {
   background: var(--card-bg);
@@ -428,7 +456,7 @@ body.light-theme #bg-video {
 
 .theme-toggle-btn {
   background: transparent;
-  border: 1.5px solid var(--card-border);
+  border: 1.5px solid var(--input-border);
   color: var(--text-primary);
   width: 42px;
   height: 42px;
@@ -624,6 +652,11 @@ body.light-theme .moon-icon { display: block; }
 .about-info {
   padding: 40px;
 }
+
+.about-actions {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
 .about-info h3, .skills-showcase h3 {
   font-family: var(--font-heading);
   font-size: 24px;
@@ -723,7 +756,7 @@ body.light-theme .moon-icon { display: block; }
   align-items: center;
   gap: 15px;
   padding: 12px 18px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--pill-bg);
   border: 1.5px solid var(--card-border);
   border-radius: var(--radius-md);
   transition: border-color var(--transition-fast), transform var(--transition-fast), opacity var(--transition-normal);
@@ -835,6 +868,7 @@ body.light-theme .moon-icon { display: block; }
 .timeline-content:hover {
   border-color: var(--primary);
   transform: scale(1.02);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .timeline-date {
@@ -902,7 +936,7 @@ body.light-theme .moon-icon { display: block; }
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--primary);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .project-image-wrapper {
@@ -1009,9 +1043,9 @@ body.light-theme .moon-icon { display: block; }
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--card-border);
-  color: var(--text-secondary);
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--tag-color);
 }
 
 /* ==========================================================================
@@ -1199,6 +1233,8 @@ body.light-theme .moon-icon { display: block; }
 .contact-value {
   font-size: 15px;
   font-weight: 600;
+  word-break: break-all;
+  display: block;
 }
 a.contact-value:hover {
   color: var(--primary);
@@ -1214,7 +1250,7 @@ a.contact-value:hover {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-round);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--pill-bg);
   border: 1.5px solid var(--card-border);
   display: flex;
   align-items: center;
@@ -1232,7 +1268,8 @@ a.contact-value:hover {
   transform: translateY(-2px);
 }
 
-/* Contact Form */
+/* Contact Form & Info Card */
+.contact-info,
 .contact-form-container {
   padding: 40px;
 }
@@ -1253,7 +1290,7 @@ a.contact-value:hover {
   width: 100%;
   padding: 12px 16px;
   background: var(--input-bg);
-  border: 1.5px solid var(--card-border);
+  border: 1.5px solid var(--input-border);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-size: 14px;
@@ -1507,7 +1544,7 @@ a.contact-value:hover {
   .about-stats { grid-template-columns: 1fr; gap: 15px; }
   .achievements-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
-  .about-info, .skills-showcase, .contact-form-container { padding: 25px 20px; }
+  .about-info, .skills-showcase, .contact-info, .contact-form-container { padding: 25px 20px; }
 }
 
 /* ==========================================================================
