@@ -90,6 +90,14 @@
         
         <div class="hero-cta animate-cta">
           <a href="#projects" class="btn btn-primary" id="cta-view-work">View Projects</a>
+          <a href="resume.pdf" download class="btn btn-secondary btn-icon" id="cta-resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-svg">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Resume</span>
+          </a>
           <a href="#contact" class="btn btn-secondary" id="cta-contact">Get in Touch</a>
         </div>
         
@@ -148,6 +156,16 @@
             <p>
               My research interests lie in Computer Vision, Deep Learning, and deploying scalable web apps for ML tools using Flask and Streamlit. I enjoy participating in hackathons, solving algorithmic puzzles, and implementing state-of-the-art architectures.
             </p>
+            <div class="about-actions">
+              <a href="resume.pdf" download class="btn btn-primary btn-icon" id="about-resume">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-svg">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Resume</span>
+              </a>
+            </div>
             <div class="about-stats">
               <div class="stat-item">
                 <span class="stat-num">8.82</span>
@@ -612,24 +630,26 @@
           <!-- Contact Form -->
           <div class="contact-form-container card-glass">
             <form id="contact-form">
+              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+              
               <div class="form-group">
                 <label for="form-name">Name</label>
-                <input type="text" id="form-name" placeholder="abc" required>
+                <input type="text" id="form-name" name="name" placeholder="abc" required>
               </div>
               
               <div class="form-group">
                 <label for="form-email">Email Address</label>
-                <input type="email" id="form-email" placeholder="abc@example.com" required>
+                <input type="email" id="form-email" name="email" placeholder="abc@example.com" required>
               </div>
               
               <div class="form-group">
                 <label for="form-subject">Subject</label>
-                <input type="text" id="form-subject" placeholder="Collaboration / Job Opportunity" required>
+                <input type="text" id="form-subject" name="subject" placeholder="Collaboration / Job Opportunity" required>
               </div>
               
               <div class="form-group">
                 <label for="form-message">Message</label>
-                <textarea id="form-message" rows="5" placeholder="Write your message here..." required></textarea>
+                <textarea id="form-message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
               </div>
               
               <button type="submit" class="btn btn-primary btn-submit" id="form-submit-btn">
@@ -657,6 +677,7 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
