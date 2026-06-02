@@ -5,24 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const body = document.body;
 
-  // Retrieve theme preference from LocalStorage or system default
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme) {
-    body.className = savedTheme;
-  } else {
-    // Default to dark theme
-    body.className = 'dark-theme';
-    localStorage.setItem('portfolio-theme', 'dark-theme');
-  }
+  // Default to dark theme on every page load
+  body.className = 'dark-theme';
 
   // Handle Theme Switching
   themeToggle.addEventListener('click', () => {
     if (body.classList.contains('dark-theme')) {
       body.classList.replace('dark-theme', 'light-theme');
-      localStorage.setItem('portfolio-theme', 'light-theme');
     } else {
       body.classList.replace('light-theme', 'dark-theme');
-      localStorage.setItem('portfolio-theme', 'dark-theme');
     }
   });
 
@@ -204,14 +195,55 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // 7. CONTACT FORM HANDLER WITH MOCK API
+  // 7. CONTACT FORM HANDLER WITH WEB3FORMS API
   // ==========================================================================
   const contactForm = document.getElementById('contact-form');
   const formSubmitBtn = document.getElementById('form-submit-btn');
   const formStatus = document.getElementById('form-status');
 
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Check if status element is hidden and show it
+    formStatus.classList.remove('hidden');
+    formStatus.textContent = '';
+    formStatus.className = 'form-status-msg';
+
+    // Fetch form fields
+    const name = document.getElementById('form-name').value;
+    const email = document.getElementById('form-email').value;
+    const subject = document.getElementById('form-subject').value;
+    const message = document.getElementById('form-message').value;
+    const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
+    let accessKey = accessKeyInput ? accessKeyInput.value : '';
+
+    // 1. First, check if key is set in config.js (CONFIG object)
+    if ((!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') && typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
+      accessKey = CONFIG.API_KEY;
+    }
+
+    // 2. Second, fallback to fetching .env dynamically (for local HTTP servers)
+    if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+      try {
+        const envResponse = await fetch('.env');
+        if (envResponse.ok) {
+          const envText = await envResponse.text();
+          const match = envText.match(/API\s*=\s*([^\s#]+)/);
+          if (match && match[1]) {
+            accessKey = match[1].trim();
+          }
+        }
+      } catch (err) {
+        console.warn('Failed to load .env file dynamically:', err);
+      }
+    }
+
+    // Safety check for unconfigured access key
+    if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+      formStatus.textContent = 'Setup required: Please generate a free access key on web3forms.com and replace YOUR_ACCESS_KEY_HERE in index.html or set it in .env (running on a local server).';
+      formStatus.className = 'form-status-msg error';
+      return;
+    }
 
     // Change button to loading state
     const originalBtnText = formSubmitBtn.innerHTML;
@@ -224,45 +256,55 @@ document.addEventListener('DOMContentLoaded', () => {
       </svg>
     `;
 
-    // Fetch form fields
-    const name = document.getElementById('form-name').value;
-    const email = document.getElementById('form-email').value;
-    const subject = document.getElementById('form-subject').value;
-    const message = document.getElementById('form-message').value;
-
-    // Simulate API network latency of 1.5s
-    setTimeout(() => {
-      try {
-        // Save to local storage for persistence representation (simulate DB write)
-        const leads = JSON.parse(localStorage.getItem('portfolio-leads') || '[]');
-        leads.push({
-          name,
-          email,
-          subject,
-          message,
-          timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('portfolio-leads', JSON.stringify(leads));
-
-        // Display Success State
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+      })
+    })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status === 200) {
         formStatus.textContent = `Thank you, ${name}! Your message has been sent successfully.`;
         formStatus.className = 'form-status-msg success';
         
-        // Reset form inputs
+        // Save to local storage for persistence representation (simulate DB write)
+        try {
+          const leads = JSON.parse(localStorage.getItem('portfolio-leads') || '[]');
+          leads.push({ name, email, subject, message, timestamp: new Date().toISOString() });
+          localStorage.setItem('portfolio-leads', JSON.stringify(leads));
+        } catch (storageErr) {
+          console.warn('Could not write to local storage:', storageErr);
+        }
+
         contactForm.reset();
-      } catch (err) {
-        formStatus.textContent = 'Oops! Something went wrong. Please try again.';
+      } else {
+        formStatus.textContent = json.message || 'Oops! Something went wrong. Please try again.';
         formStatus.className = 'form-status-msg error';
-      } finally {
-        formSubmitBtn.disabled = false;
-        formSubmitBtn.innerHTML = originalBtnText;
-        
-        // Auto-hide status message after 5 seconds
-        setTimeout(() => {
-          formStatus.className = 'form-status-msg hidden';
-        }, 5000);
       }
-    }, 1500);
+    })
+    .catch((error) => {
+      console.error(error);
+      formStatus.textContent = 'Oops! Something went wrong. Please check your connection and try again.';
+      formStatus.className = 'form-status-msg error';
+    })
+    .finally(() => {
+      formSubmitBtn.disabled = false;
+      formSubmitBtn.innerHTML = originalBtnText;
+      
+      // Auto-hide status message after 6 seconds
+      setTimeout(() => {
+        formStatus.className = 'form-status-msg hidden';
+      }, 6000);
+    });
   });
 
   // ==========================================================================
